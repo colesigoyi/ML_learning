@@ -1,1 +1,1 @@
-使用jupyter lab进行python基础语法的学习
+使用jupyter lab学习python基础语法和机器学习
