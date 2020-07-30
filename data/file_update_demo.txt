@@ -1,0 +1,15 @@
+INSERT OVERWRITE TABLE dwd.dwd_sap_al_register_company_operate_log PARTITION(dt)
+SELECT
+register_company_operate_id,
+contract_service_matter_id,
+service_origin_matter_id,
+operator_id,
+operator_role,
+operate_desc,
+operate_client,
+from_unixtime(CAST(create_time / 1000 AS bigint), 'yyyy-MM-dd HH:mm:ss') create_time,
+from_unixtime(CAST(update_time / 1000 AS bigint), 'yyyy-MM-dd HH:mm:ss') update_time,
+contract_service_matter_current_id,
+date_format(current_date(),'yyyyMMdd') dt
+FROM 
+ods.sap_al_register_company_operate_log_incr;
